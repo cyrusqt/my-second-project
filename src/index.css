@@ -1,0 +1,43 @@
+/* make page background black and default font color white */
+:root{
+  --front-bg: none;
+}
+
+html, body { height: 100%; }
+
+body {
+  /* remove any site background image and use solid black */
+  background-image: none !important;
+  background-color: #000 !important;
+  color: #fff !important;
+
+  margin: 0;
+  min-height: 100vh;
+  padding-top: calc(var(--navbar-height, 64px) + 20px);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ensure links inherit white color unless explicitly styled */
+a { color: inherit; }
+
+/* make common components transparent so the black page background shows through,
+   and ensure their text is white for contrast */
+.navbar,
+.Profile, .profile,
+.about, .about-content,
+.contact-section, .contact, .contact-container {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* if any buttons were dark-on-dark, keep them readable (optional) */
+.btn {
+  /* keep existing button styling, but ensure text is readable */
+  color: inherit;
+}
