@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Contact.css";
+// Add this line if you're not already importing Font Awesome somewhere globally
+// import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -10,7 +12,6 @@ function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
         console.log("Form submitted:", formData);
     };
 
@@ -23,11 +24,11 @@ function Contact() {
     };
 
     return (
-        <section className="contact" id="contact">
-            <div className="contact-content">
-                <h2>Contact Me</h2>
+        <section className="contact-section" id="contact">
+            <div className="contact-container">
+                <h2>Get in Touch</h2>
                 <p className="contact-intro">
-                    Let's work together! Fill out the form below or reach out directly.
+                    I'd love to collaborate or hear your ideas — send me a message!
                 </p>
 
                 <form className="contact-form" onSubmit={handleSubmit}>
@@ -39,6 +40,7 @@ function Contact() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
+                            placeholder="Your full name"
                             required
                         />
                     </div>
@@ -51,6 +53,7 @@ function Contact() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
+                            placeholder="your@email.com"
                             required
                         />
                     </div>
@@ -62,24 +65,35 @@ function Contact() {
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
+                            placeholder="Write your message here..."
                             required
                             rows="5"
                         ></textarea>
                     </div>
 
-                    <button type="submit" className="submit-btn">Send Message</button>
+                    <button type="submit" className="submit-button">Send Message</button>
                 </form>
 
                 <div className="contact-info">
                     <div className="info-item">
                         <h3>Email</h3>
-                        <p>hello@example.com</p>
+                        <p>clauron.king@gmail.com</p>
                     </div>
                     <div className="info-item">
                         <h3>Follow Me</h3>
                         <div className="social-links">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://www.facebook.com/share/1BLVmAhdbq/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="facebook">
+                                <i className="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="https://instagram.com/cyrusbisinti/" target="_blank" rel="noopener noreferrer" className="instagram">
+                                <i className="fab fa-instagram"></i> Instagram
+                            </a>
+                            <a href="https://github.com/cyrusqt" target="_blank" rel="noopener noreferrer" className="github">
+                                <i className="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="linkedin">
+                                <i className="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
                         </div>
                     </div>
                 </div>

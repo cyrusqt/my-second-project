@@ -1,42 +1,46 @@
+/* Root section styling */
 .contact-section {
     min-height: 100vh;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 1rem;
-    background: rgba(0, 0, 0, 0.8);
+    padding: 4rem 1.5rem;
+    background: linear-gradient(145deg, #0d1117, #161b22);
 }
 
-.contact-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-}
-
+/* Main container */
 .contact-container {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
     width: 100%;
+    max-width: 800px;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     padding: 3rem;
     border-radius: 16px;
-    color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    color: #e6edf3;
+    transition: transform 0.3s ease;
 }
 
+.contact-container:hover {
+    transform: translateY(-3px);
+}
+
+/* Headings */
 .contact-container h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     text-align: center;
-    margin-bottom: 2rem;
-    color: #fff;
+    margin-bottom: 1rem;
+    color: #58a6ff;
 }
 
+.contact-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #8b949e;
+    font-size: 1.1rem;
+}
+
+/* Form styling */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -44,40 +48,51 @@
     margin-bottom: 2rem;
 }
 
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #58a6ff;
+    font-weight: 600;
+}
+
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     color: #fff;
     font-size: 1rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #58a6ff;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
 }
 
+/* Submit button */
 .submit-button {
     background: #58a6ff;
     color: #fff;
     padding: 1rem;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .submit-button:hover {
+    background: #4794e0;
     transform: translateY(-2px);
 }
 
+/* Contact info section */
 .contact-info {
     margin-top: 3rem;
     padding-top: 2rem;
@@ -91,34 +106,101 @@
 
 .info-item h3 {
     color: #58a6ff;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
 }
 
 .social-links a {
-    color: #fff;
+    color: #e6edf3;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
-    transition: background 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .social-links a:hover {
     background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
     .contact-container {
-        padding: 2rem 1rem;
+        padding: 2rem 1.5rem;
     }
-    
-    .contact-section {
-        padding: 2rem 1rem;
+
+    .contact-container h2 {
+        font-size: 2rem;
+    }
+
+    .contact-intro {
+        font-size: 1rem;
     }
 }
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 1.5rem;
+    }
+
+    .submit-button {
+        font-size: 0.95rem;
+    }
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e6edf3;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.social-links a i {
+    font-size: 1.1rem;
+}
+
+/* Hover effects per platform */
+.social-links a.facebook:hover {
+    background: #1877f2;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.social-links a.instagram:hover {
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.social-links a.github:hover {
+    background: #333;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.social-links a.linkedin:hover {
+    background: #0077b5;
+    color: #fff;
+    transform: translateY(-3px);
+}
+

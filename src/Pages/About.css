@@ -1,123 +1,140 @@
-:root {
-    --about-bg: url("../assets/AboutMe.jpg");
+:root { 
+  --about-bg: url("../assets/AboutMe.jpg");
 }
 
+/* === ABOUT SECTION BASE === */
 .about {
-    position: relative;
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 2rem;
-    color: #fff;
-    overflow: hidden;
+  position: relative;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 16px;
+  box-sizing: border-box;
 }
 
+/* === BACKGROUND IMAGE === */
 .about-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: var(--about-bg);
-    background-size: cover;
-    background-position: center;
-    opacity: 0.7;
-    z-index: -1;
-    border-radius: 16px;
+  position: absolute;
+  inset: 0;
+  background-image: var(--about-bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  z-index: -1;
+  border-radius: 16px;
 }
 
+/* === CONTENT CONTAINER === */
 .about-content {
-    position: relative;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(8px);
-    border-radius: 16px;
-    padding: 2.5rem;
-    z-index: 1;
+  position: relative;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .about h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1.5rem;
-    text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 900;
 }
 
 .intro {
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    text-align: center;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  margin: 0 auto 3rem;
+  text-align: center;
+  max-width: 800px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
+/* === SKILLS === */
 .skills-container {
-    margin: 2rem 0;
+  margin: 2rem 0;
 }
 
 .skills-container h3 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 1.5rem;
-    text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .skill-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    border-radius: 12px;
-    text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .skill-item h4 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #58a6ff;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #58a6ff;
 }
 
 .skill-item p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
 }
 
+/* === CTA BUTTON === */
 .about-footer {
-    margin-top: 3rem;
-    text-align: center;
+  margin-top: 3rem;
+  text-align: center;
 }
 
 .cta-button {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background: #58a6ff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: transform 0.2s;
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: #58a6ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
 }
 
-@media (max-width: 768px) {
-    .about {
-        margin: 2rem auto;
-        padding: 1rem;
-    }
-    
-    .about-content {
-        padding: 1.5rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Medium screens (tablets) */
+@media (max-width: 992px) {
+  .about {
+    margin: 3rem auto;
+    padding: 1.5rem;
+  }
+
+  .about-content {
+    padding: 2rem;
+  }
+
+  .skills-grid {
+    gap: 1.5rem;
+  }
 }
+
+

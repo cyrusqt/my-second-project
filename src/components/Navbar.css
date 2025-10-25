@@ -1,5 +1,5 @@
 /* ...existing code... */
-:root{
+:root {
   --navbar-height: 64px;
   --bg: rgba(10,37,64,0.9);
   --accent: #58a6ff;
@@ -7,7 +7,7 @@
 }
 
 /* fixed, elevated navbar */
-.navbar{
+.navbar {
   position: fixed;
   top: 8px;
   left: 12px;
@@ -17,7 +17,7 @@
   align-items: center;
   padding: 0 1rem;
   gap: 1rem;
-  background: linear-gradient(90deg,var(--bg), rgba(7,32,54,0.95));
+  background: linear-gradient(90deg, var(--bg), rgba(7,32,54,0.95));
   border-radius: 10px;
   z-index: 9999;
   box-shadow: 0 8px 24px rgba(2,6,23,0.45);
@@ -25,11 +25,11 @@
 }
 
 /* logo on the left */
-.logo{
+.logo {
   order: 1;
   font-weight: 800;
   letter-spacing: 2px;
-  color: #000 !important;
+  color: #58a6ff !important;
   background: none !important;
   -webkit-background-clip: unset !important;
   -webkit-text-fill-color: unset !important;
@@ -37,7 +37,7 @@
 }
 
 /* nav container placed to the right */
-.nav-links{
+.nav-links {
   order: 2;
   margin-left: auto; /* pushes nav to the far right */
   display: flex;
@@ -45,7 +45,7 @@
 }
 
 /* desktop links inline (on right) */
-.nav-links .links{
+.nav-links .links {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -53,27 +53,34 @@
   gap: 0.5rem 1rem;
   align-items: center;
 }
-.nav-links .links li{ margin: 0; }
-.nav-links .links a{
-  font-family: inherit;
-  font-weight: 800;            /* same weight as .logo */
-  font-size: 0.95rem;          /* same size as .logo */
-  letter-spacing: 1.5px;       /* same spacing as .logo */
-  text-transform: uppercase;   /* match title casing */
-  color: #000 !important;          /* plain color, no gradient */
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  text-decoration: none;
-  padding: 0.35rem 0.6rem;
+
+.nav-links .links li {
+  margin: 0;
 }
+
+.nav-links .links a {
+  font-family: inherit;
+  font-weight: 800;           /* same weight as .logo */
+  font-size: 0.95rem;         /* same size as .logo */
+  letter-spacing: 1.5px;      /* same spacing as .logo */
+  text-transform: uppercase;  /* match title casing */
+  color: #000 !important;     /* black text on white background */
+  background: #fff;           /* ✅ white background for each link */
+  border-radius: 6px;
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  transition: bg 0.2s ease, color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
 .nav-links .links a:hover,
-.nav-links .links a:focus{
-  background: rgba(255,255,255,0.06);
+.nav-links .links a:focus {
+  background: var(--accent);  /* highlight with accent color */
+  color: #fff !important;
 }
 
 /* menu toggle hidden on desktop */
-.menu-toggle{
+.menu-toggle {
   display: none;
   background: transparent;
   border: 0;
@@ -81,7 +88,8 @@
   margin-right: 8px;
   cursor: pointer;
 }
-.menu-toggle span{
+
+.menu-toggle span {
   display: block;
   width: 20px;
   height: 2px;
@@ -91,10 +99,12 @@
 }
 
 /* responsive: toggle visible, menu slides down and aligns right */
-@media (max-width: 700px){
-  .menu-toggle{ display: block; }
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: block;
+  }
 
-  .nav-links .links{
+  .nav-links .links {
     position: absolute;
     right: 12px;
     top: calc(var(--navbar-height) + 12px);
@@ -108,11 +118,33 @@
     box-shadow: 0 8px 24px rgba(2,6,23,0.5);
     z-index: 10000;
   }
-  .nav-links .links.open{ display: flex; }
-  .nav-links .links li + li{ border-top: 1px solid rgba(255,255,255,0.03); }
-  .nav-links .links a{ display: block; padding: 0.75rem 1rem; border-radius: 6px; }
+
+  .nav-links .links.open {
+    display: flex;
+  }
+
+  .nav-links .links li + li {
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .nav-links .links a {
+    display: block;
+    width: 100%;
+    background: #fff;       /* still white on mobile */
+    color: #000 !important;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    text-align: right;
+  }
+
+  .nav-links .links a:hover {
+    background: var(--accent);
+    color: #fff !important;
+  }
 }
 
 /* ensure page content not hidden under fixed navbar */
-body { padding-top: calc(var(--navbar-height) + 20px); }
+body {
+  padding-top: calc(var(--navbar-height) + 20px);
+}
 /* ...existing code... */
