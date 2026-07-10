@@ -152,6 +152,11 @@
   transition: transform 0.4s ease;
 }
 
+img.project-mockup {
+  background: #0b1224;
+  object-fit: contain;
+}
+
 .project-card:hover .project-mockup {
   transform: scale(1.06);
 }
