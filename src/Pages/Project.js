@@ -108,13 +108,13 @@ const PROJECTS = [
     title: "Portfolio Website",
     description:
       "A modern personal portfolio showcasing my projects, skills, and experience built using Next.js and Tailwind CSS.",
-    stack: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    stack: ["HTML", "CSS", "React", "TypeScript", "Framer Motion"],
     github: "#",
     demo: "#",
     Visual: PortfolioMockup,
   },
   {
-    title: "Barangay Care System",
+    title: "Sinking Fund Management System",
     description:
       "A web-based healthcare management system for barangay clinics with appointment scheduling, patient records, and reporting.",
     stack: ["Laravel", "PHP", "MySQL", "Bootstrap"],
@@ -123,7 +123,7 @@ const PROJECTS = [
     Visual: DashboardMockup,
   },
   {
-    title: "Flutter Mobile Application",
+    title: "Pro Crew Schedule Mobile Application",
     description:
       "A cross-platform Flutter application with modern UI, REST API integration, authentication, and responsive mobile experience.",
     stack: ["Flutter", "Dart", "REST API", "Firebase"],

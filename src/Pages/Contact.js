@@ -21,19 +21,19 @@ const CONTACT_INFO = [
   },
   {
     label: "Phone",
-    value: "+63 XXX XXX XXXX",
+    value: "+63 991 118 3153",
     Icon: FiPhone,
     type: "copy",
   },
   {
     label: "Location",
-    value: "Cebu, Philippines",
+    value: "Tabok Mandaue City, Cebu, Philippines",
     Icon: FiMapPin,
     type: "copy",
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/yourname",
+    value: "linkedin.com/in/cyrus-vincent-lauron",
     href: "https://linkedin.com",
     Icon: FaLinkedinIn,
     type: "link",
@@ -42,10 +42,10 @@ const CONTACT_INFO = [
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/cyrusqt", Icon: FaGithub },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: FaLinkedinIn },
+  { label: "LinkedIn", href: "https://linkedin.com/in/cyrus-vincent-lauron", Icon: FaLinkedinIn },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/share/1BLVmAhdbq/?mibextid=wwXIfr",
+    href: "https://www.facebook.com/GwapoCyrus",
     Icon: FaFacebookF,
   },
   { label: "Instagram", href: "https://instagram.com/cyrusbisinti/", Icon: FaInstagram },
@@ -184,7 +184,7 @@ function Contact() {
             </span>
 
             <h2>
-              Contact <span className="contact-accent">Me</span>
+              Hire <span className="contact-accent">Me</span>
             </h2>
             <span className="contact-underline" />
 

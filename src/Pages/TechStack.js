@@ -19,15 +19,12 @@ import {
   SiLaravel,
   SiMysql,
   SiNodedotjs,
-  SiExpress,
   SiGit,
   SiGithub,
   SiTailwindcss,
   SiBootstrap,
-  SiFigma,
   SiFirebase,
-  SiSupabase,
-  SiPostman,
+  SiBitbucket,
 } from "react-icons/si";
 import "./TechStack.css";
 
@@ -36,28 +33,26 @@ const ROW_1 = [
   { name: "CSS3", Icon: SiCss3, color: "#1572B6" },
   { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
   { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
   { name: "React", Icon: SiReact, color: "#61DAFB" },
   { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
   { name: "Flutter", Icon: SiFlutter, color: "#02569B" },
   { name: "Dart", Icon: SiDart, color: "#0175C2" },
   { name: "PHP", Icon: SiPhp, color: "#777BB4" },
   { name: "Laravel", Icon: SiLaravel, color: "#FF2D20" },
-  { name: "MySQL", Icon: SiMysql, color: "#4479A1" },
   { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
 ];
 
 const ROW_2 = [
-  { name: "Express", Icon: SiExpress, color: "#FFFFFF" },
   { name: "REST API", Icon: FiCode, color: "#34D399" },
   { name: "Git", Icon: SiGit, color: "#F05032" },
   { name: "GitHub", Icon: SiGithub, color: "#FFFFFF" },
-  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
   { name: "Bootstrap", Icon: SiBootstrap, color: "#7952B3" },
-  { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
   { name: "Firebase", Icon: SiFirebase, color: "#FFA000" },
-  { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
-  { name: "Postman", Icon: SiPostman, color: "#FF6C37" },
   { name: "VS Code", Icon: FiCode, color: "#007ACC" },
+  { name: "Bitbucket", Icon: SiBitbucket, color: "#205081" },
+  { name: "MySQL", Icon: SiMysql, color: "#4479A1" },
+  { name: "React Native", Icon: SiReact, color: "#61DAFB" },
 ];
 
 function TechCard({ tech }) {

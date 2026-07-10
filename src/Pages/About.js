@@ -64,7 +64,7 @@ function About() {
           </motion.div>
 
           <motion.a
-            href="/resume.pdf"
+            href="/resume/Resume.pdf"
             download
             className="resume-btn"
             whileHover={{ y: -3, scale: 1.03 }}
