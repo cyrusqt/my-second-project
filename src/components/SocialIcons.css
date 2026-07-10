@@ -1,0 +1,31 @@
+.social-icons {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0 0;
+  padding: 0;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 20px var(--glow);
+  background: rgba(59, 130, 246, 0.12);
+}

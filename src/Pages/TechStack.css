@@ -1,0 +1,259 @@
+/* === TECH STACK SECTION === */
+.stack-section {
+  position: relative;
+  padding: 100px 24px;
+  overflow: hidden;
+  scroll-margin-top: var(--nav-height);
+}
+
+.stack-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.stack-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+}
+
+.stack-glow-1 {
+  width: 380px;
+  height: 380px;
+  top: -12%;
+  right: -6%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+}
+
+.stack-glow-2 {
+  width: 420px;
+  height: 420px;
+  bottom: -18%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.3), transparent 70%);
+}
+
+.stack-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 10px var(--glow);
+  opacity: 0.6;
+  animation: stack-particle-float 6s ease-in-out infinite;
+}
+
+.p1 { top: 18%; left: 12%; animation-delay: 0s; }
+.p2 { top: 65%; right: 16%; animation-delay: 1.5s; }
+.p3 { bottom: 12%; left: 40%; animation-delay: 3s; }
+
+@keyframes stack-particle-float {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-16px); opacity: 1; }
+}
+
+/* Container */
+.stack-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #07111f, #0a1326);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 60px rgba(59, 130, 246, 0.12);
+}
+
+/* Header */
+.stack-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stack-icon {
+  width: 42px;
+  height: 42px;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.stack-header h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.stack-accent {
+  color: var(--blue);
+}
+
+.stack-underline {
+  display: block;
+  width: 64px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--blue);
+  margin: 16px 0 48px 62px;
+}
+
+/* Rows */
+.stack-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stack-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+.stack-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Cards */
+.stack-card {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 140px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stack-card-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.stack-card-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 0 8px;
+}
+
+.stack-card:hover,
+.stack-card:focus-visible {
+  transform: translateY(-6px) scale(1.08) rotate(1deg);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.45);
+  border-color: rgba(59, 130, 246, 0.8);
+  outline: none;
+}
+
+.stack-card:hover .stack-card-name,
+.stack-card:focus-visible .stack-card-name {
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 1300px) {
+  .stack-container {
+    max-width: 92%;
+    padding: 48px;
+  }
+
+  .stack-header h2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .stack-container {
+    padding: 40px 32px;
+  }
+
+  .stack-card {
+    width: 110px;
+    height: 110px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+
+  .stack-card-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .stack-card-name {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .stack-section {
+    padding: 60px 16px;
+  }
+
+  .stack-container {
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+
+  .stack-header h2 {
+    font-size: 30px;
+  }
+
+  .stack-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .stack-underline {
+    margin: 12px 0 32px 52px;
+  }
+
+  .stack-row-bottom-wrap {
+    display: none;
+  }
+
+  .stack-track {
+    cursor: grab;
+  }
+
+  .stack-track:active {
+    cursor: grabbing;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-particle {
+    animation: none;
+  }
+}

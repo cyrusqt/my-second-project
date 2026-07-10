@@ -2,24 +2,33 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Profile from './Pages/Profile';
 import About from './Pages/About';
+import TechStack from './Pages/TechStack';
 import Contact from './Pages/Contact';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import Projects from './Pages/Project';
+import { useState, useEffect } from 'react';
+import Loader from './components/Loader';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // show loader for two seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="App">
+    <>
+      <Loader loading={isLoading} />
       <Navbar />
-      <section id="profile">
-        <Profile />
-      </section>
-      <section id="about">
-        <About />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
-    </div>
+      <Profile />
+      <About />
+      <TechStack />
+      <Projects />
+      <Contact />
+    </>
   );
 }
 

@@ -1,78 +1,74 @@
-import React, { useEffect, useState } from "react";
-import profile from "../assets/Profile.jpg";
+import React from "react";
+import { motion } from "framer-motion";
+import SocialIcons from "../components/SocialIcons";
+import HeroButtons from "../components/HeroButtons";
+import DeveloperIllustration from "../components/DeveloperIllustration";
+import FloatingCards from "../components/FloatingCards";
+import ScrollIndicator from "../components/ScrollIndicator";
 import "./Profile.css";
 
-function Profile({
-  name = "Cyrus Vincent Lauron",
-  title = "Web Developer",
-  bio = "I  build accessible, responsive UI with CSS, HTML, and React.",
-  skills = ["React", "HTML", "CSS", "Accessibility"],
-  email = "clauron.king@gmail.com",
-}) {
-  const [typedBio, setTypedBio] = useState("");
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
 
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < bio.length) {
-        setTypedBio((prev) => prev + bio.charAt(index)); 
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 50); 
-    return () => clearInterval(interval);
-  }, [bio]);
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
+function Profile() {
   return (
-    <section
-      className="Profile"
-      style={{
-        background: `url(${profile}) center/cover no-repeat`,
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#fff",
-        textShadow: "0 2px 8px rgba(0,0,0,0.8)",
-        padding: "2rem",
-      }}
-    >
-      <div
-        className="profile-body"
-        style={{
-          backgroundColor: "rgba(0,0,0,0.6)",
-          padding: "2rem",
-          borderRadius: "12px",
-          maxWidth: "600px",
-          width: "100%",
-        }}
-      >
-        <div className="avatar">
-          <img src={profile} alt={`${name}'s profile`} />
-        </div>
-
-        <h2 className="profile-name">{name}</h2>
-        <p className="profile-title">{title}</p>
-        <p className="profile-bio" style={{ whiteSpace: "pre-wrap" }}>
-          {typedBio}
-        </p>
-
-        <ul className="profile-skills" aria-label="Skills">
-          {skills.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ul>
-
-        <div className="profile-actions">
-          <a className="btn" href={`mailto:${email}`}>
-            Email
-          </a>
-          <a className="btn btn-outline" href="#contact">
-            Contact
-          </a>
-        </div>
+    <section className="hero" id="home">
+      <div className="hero-bg" aria-hidden="true">
+        <span className="glow glow-1" />
+        <span className="glow glow-2" />
+        <span className="glow glow-3" />
       </div>
+
+      <motion.div
+        className="hero-container"
+        initial="hidden"
+        animate="show"
+        variants={container}
+      >
+        <div className="hero-left">
+          <motion.span className="hero-badge" variants={item}>
+            <span className="hero-badge-dot" />
+            Aspiring Web Developer
+          </motion.span>
+
+          <motion.h1 className="hero-heading" variants={item}>
+            Hi, I'm <span className="hero-accent">Cyrus.</span>
+          </motion.h1>
+
+          <motion.p className="hero-subtitle" variants={item}>
+            Aspiring Web Developer &amp; Flutter Developer
+          </motion.p>
+
+          <motion.p className="hero-description" variants={item}>
+            Fresh graduate passionate about building responsive websites and
+            mobile applications using modern technologies.
+          </motion.p>
+
+          <motion.div variants={item}>
+            <HeroButtons />
+          </motion.div>
+
+          <motion.div variants={item}>
+            <SocialIcons />
+          </motion.div>
+        </div>
+
+        <motion.div className="hero-right" variants={item}>
+          <DeveloperIllustration />
+          <FloatingCards />
+        </motion.div>
+      </motion.div>
+
+      <ScrollIndicator />
     </section>
   );
 }
