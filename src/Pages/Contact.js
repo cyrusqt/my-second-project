@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FiSend,
   FiMail,
@@ -8,8 +8,10 @@ import {
   FiCopy,
   FiCheck,
   FiExternalLink,
+  FiAlertCircle,
 } from "react-icons/fi";
 import { FaGithub, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { useContactForm } from "../hooks/useContactForm";
 import "./Contact.css";
 
 const CONTACT_INFO = [
@@ -125,26 +127,10 @@ function ContactCard({ info }) {
 }
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const { formData, errors, status, statusMessage, handleChange, submit } =
+    useContactForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setSubmitted(false), 2500);
-  };
+  const isLoading = status === "loading";
 
   return (
     <section className="contact-section" id="contact">
@@ -162,6 +148,26 @@ function Contact() {
           ))}
         </span>
       </div>
+
+      <AnimatePresence>
+        {(status === "success" || status === "error") && (
+          <motion.div
+            className={`contact-toast contact-toast-${status}`}
+            role="status"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            {status === "success" ? (
+              <FiCheck aria-hidden="true" />
+            ) : (
+              <FiAlertCircle aria-hidden="true" />
+            )}
+            <span>{statusMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <motion.div
         className="contact-container"
@@ -238,7 +244,7 @@ function Contact() {
               <h3>Send Me a Message</h3>
               <span className="form-underline" />
 
-              <form onSubmit={handleSubmit} noValidate>
+              <form onSubmit={submit} noValidate>
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="contact-name">Your Name</label>
@@ -249,8 +255,11 @@ function Contact() {
                       placeholder="Enter your name"
                       value={formData.name}
                       onChange={handleChange}
+                      aria-invalid={Boolean(errors.name)}
+                      disabled={isLoading}
                       required
                     />
+                    {errors.name && <span className="form-error">{errors.name}</span>}
                   </div>
                   <div className="form-field">
                     <label htmlFor="contact-email">Your Email</label>
@@ -261,8 +270,11 @@ function Contact() {
                       placeholder="Enter your email"
                       value={formData.email}
                       onChange={handleChange}
+                      aria-invalid={Boolean(errors.email)}
+                      disabled={isLoading}
                       required
                     />
+                    {errors.email && <span className="form-error">{errors.email}</span>}
                   </div>
                 </div>
 
@@ -275,8 +287,11 @@ function Contact() {
                     placeholder="Enter subject"
                     value={formData.subject}
                     onChange={handleChange}
+                    aria-invalid={Boolean(errors.subject)}
+                    disabled={isLoading}
                     required
                   />
+                  {errors.subject && <span className="form-error">{errors.subject}</span>}
                 </div>
 
                 <div className="form-field">
@@ -287,19 +302,24 @@ function Contact() {
                     placeholder="Write your message here..."
                     value={formData.message}
                     onChange={handleChange}
+                    aria-invalid={Boolean(errors.message)}
+                    disabled={isLoading}
                     required
                   />
+                  {errors.message && <span className="form-error">{errors.message}</span>}
                 </div>
 
                 <motion.button
                   type="submit"
                   className="contact-submit-btn"
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={isLoading ? undefined : { y: -3, scale: 1.02 }}
+                  whileTap={isLoading ? undefined : { scale: 0.98 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
+                  disabled={isLoading}
+                  aria-busy={isLoading}
                 >
                   <FiSend aria-hidden="true" />
-                  {submitted ? "Message Sent!" : "Send Message"}
+                  {isLoading ? "Sending..." : "Send Message"}
                 </motion.button>
               </form>
             </div>
